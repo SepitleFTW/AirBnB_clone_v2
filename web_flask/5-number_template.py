@@ -44,7 +44,7 @@ def number(n):
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def nooby_number(n):
-    return f"<html><body><h1><Number: {n}</h1></body></html>"
+    return f"<HTML><BODY><H1><Number: {n}</H1></BODY></HTML>"
 
 
 if __name__ == "__main__":
