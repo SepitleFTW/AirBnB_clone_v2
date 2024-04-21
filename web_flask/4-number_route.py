@@ -35,9 +35,9 @@ def python(text):
     return "Python " + tetx.replace("_", " ")
 
 
-@app.route("/number/<int>n", strict_slashes=False)
+@app.route("/number/<int:n>", strict_slashes=False)
 def number(n):
-        return f"{n} is a number"
+    return f"{n} is a number"
 
 
 if__name__ == "__main__":
