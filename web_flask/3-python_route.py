@@ -8,43 +8,31 @@ Routes:
     /c/<text>: Doth present 'C' followed by the value of <text>.
     /python/(<text>): Doth present 'Python' followed by the value of <text>.
 """
+
 from flask import Flask
 
 app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
-def hello_hbnb():
-    """Doth display 'Salutations, good HBNB!'."""
-    return "Salutations, good HBNB!"
+def hello():
+    return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
-    """Doth display 'HBNB'."""
     return "HBNB"
 
 
 @app.route("/c/<text>", strict_slashes=False)
 def c(text):
-    """Doth display 'C' followed by the value of <text>.
-
-    Doth replace any underscores in <text> with spaces.
-    """
-    text = text.replace("_", " ")
-    return "C {}".format(text)
+    return "C " + text.replace("_", " ")
 
 
-@app.route("/python", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
-def python(text="is cool"):
-    """Doth display 'Python' followed by the value of <text>.
-
-    Doth replace any underscores in <text> with spaces.
-    """
-    text = text.replace("_", " ")
-    return "Python {}".format(text)
+def python(text):
+    return "Python " + text.replace("_", " ")
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
