@@ -5,11 +5,12 @@ The application is set to listen on 0.0.0.0, port 5000.
 Routes:
     /states_list: An HTML page containing a list of all State objects in DBStorage.
 """
-from models import storage
-from flask import Flask
-from flask import render_template
 
+from flask import Flask, render_template
+from models import *
+from models import storage
 app = Flask(__name__)
+
 
 
 @app.route("/states_list", strict_slashes=False)
@@ -19,6 +20,12 @@ def states_list():
     States are arranged alphabetically.
     """
     states = storage.all("State")
+    return render_template("7-states_list.html", states=states)
+
+
+@app.route("/states_list", strict_slashes=False)
+def states_list():
+    states = sorted(list(storage.all("State").values()), key=lambda x: x.name)
     return render_template("7-states_list.html", states=states)
 
 
