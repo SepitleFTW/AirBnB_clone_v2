@@ -14,7 +14,7 @@ Routes:
         - Mentions whether <n> is even or odd in the body.
 """
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
